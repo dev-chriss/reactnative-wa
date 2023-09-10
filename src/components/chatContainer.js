@@ -8,7 +8,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {useDispatch} from 'react-redux';
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import EmojiPicker from 'rn-emoji-keyboard';
 import {chatStyle} from '../styles/chatStyle';
 import allActions from '../store/actions';
@@ -17,6 +17,7 @@ export default ChatContainer = ({messages, markedId}) => {
   const senderId = 'abc';
   const dispatch = useDispatch();
   const [showEmoji, setShowEmoji] = useState(false);
+  let flatListRef = useRef(null);
 
   const handleSelectMessage = id => {
     dispatch(allActions.messages.markMessage(id));
@@ -91,9 +92,11 @@ export default ChatContainer = ({messages, markedId}) => {
     <View style={chatStyle.chatContainer}>
       <SafeAreaView style={{flex: 1}}>
         <FlatList
+          ref={ref => (flatListRef = ref)}
           data={messages}
           renderItem={renderMessage}
           keyExtractor={keyExtractor}
+          onContentSizeChange={() => flatListRef.scrollToEnd({animated: false})}
           // getItemLayout = {(data, index) => ({
           //   length: 70,
           //   offset: 70 * index,
