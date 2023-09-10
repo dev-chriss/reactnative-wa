@@ -30,10 +30,6 @@ export default ChatScreen = ({navigation, route}) => {
 
   return (
     <View style={chatStyle.container}>
-      {/* <Image
-        source={require("../../assets/wpBackGround.jpg")}
-        style={chatStyle.backGrounImage}
-      /> */}
       <ChatHeader
         item={route.params.item}
         navigation={navigation}

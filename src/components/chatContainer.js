@@ -39,8 +39,8 @@ export default ChatContainer = ({messages, markedId}) => {
         <View
           style={[
             item.sender === senderId
-              ? chatStyle.chatBoxLeft2
-              : chatStyle.chatBoxRight2,
+              ? chatStyle.chatBoxRight
+              : chatStyle.chatBoxLeft,
           ]}>
           <TouchableOpacity
             onLongPress={() => {

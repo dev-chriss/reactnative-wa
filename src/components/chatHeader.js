@@ -17,9 +17,11 @@ export default ChatHeader = ({item, navigation}) => {
   const dispatch = useDispatch();
 
   const handleBookmark = () => {
-    // todo
-    // eslint-disable-next-line no-alert
-    alert('Bookmark selected');
+    //todo
+  };
+
+  const handleViewProfile = () => {
+    navigation.navigate('Profile', {item: item});
   };
 
   return (
@@ -39,7 +41,7 @@ export default ChatHeader = ({item, navigation}) => {
       <TouchableOpacity
         style={chatStyle.nameButton}
         onPress={() => {
-          navigation.navigate('Profile', {item: item});
+          handleViewProfile();
         }}>
         <View style={chatStyle.nameContent}>
           <Text style={chatStyle.nameText}>{item.name}</Text>
@@ -69,12 +71,11 @@ export default ChatHeader = ({item, navigation}) => {
                 fontSize: 14,
               },
             }}>
+            <MenuOption
+              text="View Profile"
+              onSelect={() => handleViewProfile()}
+            />
             <MenuOption text="Bookmark" onSelect={() => handleBookmark()} />
-            <MenuOption text="Menu1" />
-            <MenuOption text="Menu2" />
-            <MenuOption text="Menu3" />
-            <MenuOption text="Menu4" />
-            <MenuOption text="Menu5" />
           </MenuOptions>
         </Menu>
       </View>
