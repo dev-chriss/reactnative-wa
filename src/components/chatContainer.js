@@ -110,7 +110,20 @@ export default ChatContainer = ({messages, markedId}) => {
         onClose={() => {
           setShowEmoji(false);
         }}
-        disabledCategories={['activities', 'flags', 'objects', 'symbols']}
+        categoryPosition="top"
+        expandable={true}
+        disabledCategories={[
+          // 'smileys_emotion',
+          // 'people_body',
+          'activities',
+          'flags',
+          'objects',
+          'symbols',
+          'animals_nature',
+          'food_drink',
+          'travel_places',
+          'objects',
+        ]}
       />
     </View>
   );

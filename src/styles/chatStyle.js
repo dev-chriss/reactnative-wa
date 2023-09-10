@@ -175,16 +175,16 @@ export const chatStyle = StyleSheet.create({
   },
   emojiLayout: {
     position: 'relative',
-    top: 42,
-    width: 25,
-    height: 25,
+    top: 46,
+    width: 30,
+    height: 30,
     borderRadius: 50,
-    backgroundColor: '#fff',
-    padding: 2,
+    backgroundColor: '#FFF',
+    padding: 6,
   },
   blankEmoji: {
-    width: 25,
-    height: 25,
+    width: 30,
+    height: 30,
   },
   iconEmoji: {
     borderRadius: 50,
