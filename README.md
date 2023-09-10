@@ -1,10 +1,10 @@
 ## Features
 
-- Chats
-- Stories - Status
-- Calls
-- Messages - "when you press a message" : You can send a message but it doesn't store.
-- Profile
+- Chats Page
+- Stories - Status Page
+- Calls Page
+- Private Chat Page
+- Profile Page
 - Search
 - Reaction Emotion Bubble
 
