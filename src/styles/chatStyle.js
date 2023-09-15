@@ -63,6 +63,12 @@ export const chatStyle = StyleSheet.create({
     fontSize: 12,
     fontWeight: '500',
   },
+  headerStories: {
+    width: '25%',
+    height: '100%',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+  },
   headerIcons: {
     width: '25%',
     height: '100%',
@@ -204,8 +210,8 @@ export const chatStyle = StyleSheet.create({
     position: 'absolute',
     zIndex: -1,
     width: width,
-    // height:height,
     height: '100%',
+    objectFit: 'scale-down',
   },
   leftArrow: {
     position: 'absolute',

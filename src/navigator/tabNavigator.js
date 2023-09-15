@@ -18,6 +18,7 @@ const {width} = Dimensions.get('window');
 export default function TabNavigator({navigation}) {
   const [currentPage, setCurrentPage] = useState('');
   const fadeAnim = useRef(new Animated.Value(0)).current;
+
   useEffect(() => {
     if (currentPage === 'Stories') {
       fadeIn(); // Start the animation when the component mounts
@@ -123,7 +124,10 @@ export default function TabNavigator({navigation}) {
         <Tab.Screen name="Chats">
           {props => <Chats {...props} sNavigator={navigation} />}
         </Tab.Screen>
-        <Tab.Screen name="Stories" component={Stories} />
+        {/* <Tab.Screen name="Stories" component={Stories} /> */}
+        <Tab.Screen name="Stories">
+          {props => <Stories {...props} sNavigator={navigation} />}
+        </Tab.Screen>
         <Tab.Screen name="Calls" component={Calls} />
       </Tab.Navigator>
       {getCurrentPagesButton()}

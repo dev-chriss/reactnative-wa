@@ -3,10 +3,10 @@ import React from 'react';
 import {routeStyles} from '../styles/routeStyle';
 import StoriesComponent from '../components/storiesComponent';
 
-export default function Stories() {
+export default function Stories({sNavigator}) {
   return (
     <View style={routeStyles.container}>
-      <StoriesComponent />
+      <StoriesComponent navigation={sNavigator} />
     </View>
   );
 }

@@ -116,9 +116,20 @@ const getDate = registered => {
   }
 };
 
-const GetStories = ({item}) =>
+const handleViewStoriesDtl = ({item, navigation}) => {
+  navigation?.navigate('StoriesDetail', {
+    item: item,
+    // navigation: navigation,
+  });
+};
+
+const GetStories = ({item, navigation}) =>
   !item.isActive ? (
-    <TouchableOpacity style={routeStyles.storiesBox}>
+    <TouchableOpacity
+      style={routeStyles.storiesBox}
+      onPress={() => {
+        handleViewStoriesDtl({item, navigation});
+      }}>
       <TouchableOpacity style={routeStyles.storiesFoto}>
         <View style={routeStyles.storiesCircle}>
           {item.image ? (
@@ -133,9 +144,13 @@ const GetStories = ({item}) =>
     </TouchableOpacity>
   ) : null;
 
-const GetSeenStories = ({item}) =>
+const GetSeenStories = ({item, navigation}) =>
   item.isActive ? (
-    <TouchableOpacity style={routeStyles.storiesBox}>
+    <TouchableOpacity
+      style={routeStyles.storiesBox}
+      onPress={() => {
+        handleViewStoriesDtl({item, navigation});
+      }}>
       <TouchableOpacity style={routeStyles.storiesFoto}>
         <View style={routeStyles.storiesCircleOp}>
           <Image source={{uri: item.image}} style={routeStyles.storiesFoto} />
@@ -148,7 +163,7 @@ const GetSeenStories = ({item}) =>
     </TouchableOpacity>
   ) : null;
 
-const GetAllStories = ({storiesData}) => (
+const GetAllStories = ({storiesData, navigation}) => (
   <View>
     <TouchableOpacity style={routeStyles.storiesBox}>
       <TouchableOpacity style={routeStyles.storiesFoto}>
@@ -182,7 +197,9 @@ const GetAllStories = ({storiesData}) => (
     </Text>
 
     {storiesData?.length ? (
-      storiesData.map(item => <GetStories item={item} key={item._id} />)
+      storiesData.map(item => (
+        <GetStories item={item} key={item._id} navigation={navigation} />
+      ))
     ) : (
       <Text style={routeStyles.dataNotFound}>Data not found</Text>
     )}
@@ -199,14 +216,16 @@ const GetAllStories = ({storiesData}) => (
     </Text>
 
     {storiesData?.length ? (
-      storiesData.map(item => <GetSeenStories item={item} key={item._id} />)
+      storiesData.map(item => (
+        <GetSeenStories item={item} key={item._id} navigation={navigation} />
+      ))
     ) : (
       <Text style={routeStyles.dataNotFound}>Data not found</Text>
     )}
   </View>
 );
 
-export default function StoriesComponent() {
+export default function StoriesComponent({navigation}) {
   const searchPhrase = useSelector(state => state.search.searchPhrase);
   const [filteredData, setFilteredData] = useState([]);
 
@@ -225,7 +244,7 @@ export default function StoriesComponent() {
   return (
     <View style={routeStyles.storiesContent}>
       <ScrollView>
-        <GetAllStories storiesData={filteredData} />
+        <GetAllStories storiesData={filteredData} navigation={navigation} />
       </ScrollView>
     </View>
   );
